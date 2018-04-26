@@ -10,8 +10,14 @@
   </head>
 
   <body>
-  <%= link_to 'HomePage', root_path %> 
-  <%= link_to 'Add New Post', new_post_path %> 
+  <div class="container">
+  
+  <br>
+  <%= link_to '<button type="button" class="btn btn-danger">Home Page</button>'.html_safe, root_path %>
+  <%= link_to '<button type="button" class="btn btn-primary">Add New Post</button>'.html_safe, new_post_path %>
+  <br><br>
+
     <%= yield %>
+  </div>
   </body>
 </html>
