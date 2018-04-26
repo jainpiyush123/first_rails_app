@@ -1,11 +1,29 @@
 <center>
+<div class="container" style="background-color: #FDF7E4">
 <h1>View All Posts</h1>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Title</th>
+        <th>Body</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each_with_index do |post, index| %>
+  <tr data-link="<%= post_path(post) %>" style="cursor: pointer">
+    <td><%= index+1 %></td>
+    <td><%= post.title %></td>
+    <td> <%= truncate(post.body, :length => 50) %></td>
+  </tr>
+  <% end %>
+    </tbody>
+  </table>
+  </div>
+  </center>
 
-<% @posts.each do |post| %>
-<p>Title: <%=post.title %></p>
-<p>Body: <%= truncate(post.body, :length => 50) %></p>
-<br>
-<%= link_to '<button type="button" class="btn btn-primary">Read Post</button>'.html_safe, post %>
-
-<% end %>
-<center>
+  <script>
+	  $("tr[data-link]").click(function() {
+	  window.location = $(this).data("link")
+	})
+  </script>
