@@ -1,7 +1,17 @@
-<p><%= comment.name %></p>
+<div style="background-color: #60BB94">
+<hr>
+<p>Name: <%= comment.name %></p>
 
-<p><%= comment.body %></p>
+<p>Body: <%= comment.body %></p>
 
-<p><%= time_ago_in_words(comment.created_at) %></p>
+<p><%= time_ago_in_words(comment.created_at) %> ago</p>
 <br>
+
+<h2> <%= comment.replies.count %> Replies</h2>
+     <%= render comment.replies %>
+     <h3> Reply form goes under this</h3>
+
+
 <p><%=link_to 'Delete',[comment.post,comment], method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<hr>
+</div>
